@@ -21,7 +21,7 @@ A production-ready starter template built with **Next.js 16**, **Supabase**, **R
 ```bash
 git clone https://github.com/your-username/next-supabase-template.git
 cd next-supabase-template
-npm install
+bun install
 ```
 
 ### 2. Environment Setup
@@ -36,7 +36,7 @@ NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY=your_supabase_anon_key
 ### 3. Run Development Server
 
 ```bash
-npm run dev
+bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the application.
