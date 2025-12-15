@@ -18,7 +18,8 @@ export const useUserAuth = () => {
     const logout = async () => {
         await supabaseClient.auth.signOut();
 
-        // 🔥 Force UI refresh
+        // 🔥 Force UI refresh by clearing the data immediately
+        queryClient.setQueryData(['auth', 'user'], null);
         queryClient.invalidateQueries({ queryKey: ['auth', 'user'] });
     };
 
