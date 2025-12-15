@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Supabase Starter Template
 
-## Getting Started
+A production-ready starter template built with **Next.js 16**, **Supabase**, **React Query**, and **Shadcn UI**.
 
-First, run the development server:
+![Template Preview](https://via.placeholder.com/800x400?text=Next.js+Supabase+Template)
+
+## 🚀 Features
+
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router, Server Actions)
+- **Authentication**: [Supabase Auth](https://supabase.com/auth) (Magic Link configured)
+- **Database**: [Supabase Postgres](https://supabase.com/database)
+- **State Management**: [TanStack React Query](https://tanstack.com/query/latest)
+- **UI Library**: [Shadcn UI](https://ui.shadcn.com/) + [Tailwind CSS 4](https://tailwindcss.com/)
+- **Styling**: Dark mode ready, beautiful gradients, and polished aesthetics.
+- **UX**: [Sonner](https://sonner.emilkowal.ski/) Toasts for notifications.
+
+## 🛠️ Getting Started
+
+### 1. Clone & Install
+
+```bash
+git clone https://github.com/your-username/next-supabase-template.git
+cd next-supabase-template
+npm install
+```
+
+### 2. Environment Setup
+
+Create a `.env.local` file in the root directory:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY=your_supabase_anon_key
+```
+
+### 3. Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📂 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/` - Next.js App Router pages and layouts.
+  - `app/login/` - Dedicated login page.
+  - `app/page.tsx` - Modern landing page.
+- `components/ui/` - Reusable Shadcn UI components.
+- `hooks/` - Custom hooks (e.g., `useUser`, `useUserAuth`).
+- `lib/` - Supabase client configuration.
+- `providers/` - React Context providers (QueryClient, Toaster).
 
-## Learn More
+## 🔐 Authentication
 
-To learn more about Next.js, take a look at the following resources:
+The template comes with pre-configured Email Magic Link authentication.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Login**: `/login` uses `supabase.auth.signInWithOtp`
+- **Hooks**: `useUser` for session state, `useUserAuth` for actions.
+- **Feedback**: Integrated toasts handling success/error states.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎨 UI Customization
 
-## Deploy on Vercel
+Built with Tailwind CSS. Modify `app/globals.css` to update the color palette or theme variables.
+Global scrollbars are hidden by default for a cleaner look.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
