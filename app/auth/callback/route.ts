@@ -1,14 +1,10 @@
-// src/app/auth/callback/route.ts
-
-import { NextResponse } from 'next/server';
-// The client you created from the Server-Side Auth instructions
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
+import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
     const { searchParams, origin } = new URL(request.url);
     const code = searchParams.get('code');
-    // if "next" is in param, use it as the redirect URL
     const next = searchParams.get('next') ?? '/';
 
     if (code) {
