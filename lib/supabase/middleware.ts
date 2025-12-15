@@ -30,8 +30,11 @@ export async function updateSession(request: NextRequest) {
 
     // refreshing the auth token
     const { data: { user } } = await supabase.auth.getUser();
+    console.log(user);
 
     if (request.nextUrl.pathname.startsWith('/login') && user) {
+        console.log("hello");
+
         return NextResponse.redirect(new URL('/', request.url));
     }
 
