@@ -98,12 +98,10 @@ export default function Home() {
       <footer className="border-t border-border/40 bg-muted/30">
         <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2024 NextSupabase Template. All rights reserved.
+            © 2025 Dev Verse. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
-            <a href="#" className="hover:text-foreground transition-colors">Terms</a>
-            <a href="#" className="hover:text-foreground transition-colors">GitHub</a>
+            <Link href="https://github.com/ScreenTechnicals/next-supabase-template" target="_blank" className="hover:text-foreground transition-colors">GitHub</Link>
           </div>
         </div>
       </footer>
