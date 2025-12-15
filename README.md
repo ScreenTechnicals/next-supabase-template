@@ -2,7 +2,7 @@
 
 A production-ready starter template built with **Next.js 16**, **Supabase**, **React Query**, and **Shadcn UI**.
 
-![Template Preview](https://via.placeholder.com/800x400?text=Next.js+Supabase+Template)
+<img width="1919" height="994" alt="Screenshot 2025-12-15 at 3 58 11 PM" src="https://github.com/user-attachments/assets/d051c0eb-9e1b-4155-951b-c5d83320e683" />
 
 ## 🚀 Features
 
