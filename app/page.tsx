@@ -1,12 +1,13 @@
 "use client";
 
 import { ProductCard } from "@/components/ProductCard";
+import { SkeltonProductCardGrid } from "@/components/SkeltonProductCardGrid";
 import { useStickers } from "@/hooks/useStickers";
 
 
 export default function Home() {
 
-  const { data: stickers } = useStickers();
+  const { data: stickers, isLoading } = useStickers();
 
   console.log(stickers);
 
@@ -17,10 +18,9 @@ export default function Home() {
         <p className="text-xl text-muted-foreground">UTimes are tough. Liven up your home with some cute Cat Stickers. 🐈</p>
       </section>
 
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {
-          stickers?.map((sticker) => (
+      {isLoading ? <SkeltonProductCardGrid /> :
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {stickers?.map((sticker) => (
             <ProductCard
               key={sticker.id}
               id={sticker.id}
@@ -30,9 +30,9 @@ export default function Home() {
               description={sticker.description || ""}
               price={sticker.price}
             />
-          ))
-        }
-      </div>
+          ))}
+        </div>
+      }
 
     </div>
   );

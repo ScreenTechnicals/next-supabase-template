@@ -2,6 +2,8 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from "@/components/ui/empty";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
     Table,
     TableBody,
@@ -18,11 +20,53 @@ export default function OrdersPage() {
     const { orders, isLoading } = useOrders();
 
     if (isLoading) {
-        return <div className="container py-10">Loading orders...</div>;
+        return (
+            <div className="container py-10 max-w-4xl mx-auto space-y-8">
+                <Skeleton className="h-10 w-48" />
+                <div className="flex flex-col gap-6">
+                    {[1, 2, 3].map((i) => (
+                        <Card key={i} className="overflow-hidden">
+                            <CardHeader className="bg-muted/50 flex flex-row items-center justify-between space-y-0 p-4">
+                                <div className="space-y-2">
+                                    <Skeleton className="h-5 w-32" />
+                                    <Skeleton className="h-4 w-48" />
+                                </div>
+                                <div className="flex flex-col items-end gap-2">
+                                    <Skeleton className="h-6 w-24" />
+                                    <Skeleton className="h-5 w-20" />
+                                </div>
+                            </CardHeader>
+                            <CardContent className="p-6">
+                                <div className="space-y-4">
+                                    {[1, 2].map((j) => (
+                                        <div key={j} className="flex items-center justify-between">
+                                            <div className="flex items-center gap-4">
+                                                <Skeleton className="h-12 w-12 rounded-md" />
+                                                <Skeleton className="h-5 w-48" />
+                                            </div>
+                                            <Skeleton className="h-5 w-24" />
+                                        </div>
+                                    ))}
+                                </div>
+                            </CardContent>
+                        </Card>
+                    ))}
+                </div>
+            </div>
+        );
     }
 
     if (!orders?.length) {
-        return <div className="container py-10">No orders found.</div>;
+        return (
+            <div className="py-10 flex justify-center">
+                <Empty>
+                    <EmptyHeader>
+                        <EmptyTitle>No orders found.</EmptyTitle>
+                        <EmptyDescription>Looks like you haven't placed any orders yet.</EmptyDescription>
+                    </EmptyHeader>
+                </Empty>
+            </div>
+        );
     }
 
     return (

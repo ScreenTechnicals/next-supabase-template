@@ -17,12 +17,12 @@ export const Header = () => {
     return (
         <header className="border-b sticky inset-0 bg-muted border-border/60 z-50">
             <div className="container mx-auto flex h-16 items-center justify-between px-4">
-                <div className="flex items-center gap-2 font-bold text-xl tracking-tight">
+                <Link href="/" className="flex items-center gap-2 font-bold text-xl tracking-tight">
                     <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground">
                         <Zap className="h-5 w-5 fill-current" />
                     </div>
                     <span>Cat Stickers</span>
-                </div>
+                </Link>
                 <nav className="flex items-center gap-4">
                     {isAuthenticated ? (
                         <>

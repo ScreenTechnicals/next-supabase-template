@@ -1,12 +1,14 @@
 "use client";
 
+import { SkeletonCheckout } from "@/components/SkeletonCheckout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty";
 import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/hooks/useCart";
 import { useOrders } from "@/hooks/useOrders";
 import { CartItem } from "@/types/cart";
-import { Minus, Plus, Trash2 } from "lucide-react";
+import { Minus, Plus, ShoppingCart, Trash2 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useMemo } from "react";
@@ -39,14 +41,28 @@ export default function CheckoutPage() {
     };
 
     if (isCartLoading) {
-        return <div className="container py-10">Loading cart...</div>;
+        return <SkeletonCheckout />;
     }
 
     if (!cart?.items.length) {
         return (
-            <div className="container py-10 flex flex-col items-center justify-center gap-4 min-h-[50vh]">
-                <h1 className="text-2xl font-bold">Your cart is empty</h1>
-                <Button onClick={() => router.push("/")}>Continue Shopping</Button>
+            <div className="py-10 min-h-[400px] flex items-center justify-center">
+                <Empty>
+                    <EmptyHeader>
+                        <EmptyMedia variant="icon">
+                            <ShoppingCart />
+                        </EmptyMedia>
+                        <EmptyTitle>Your cart is empty</EmptyTitle>
+                        <EmptyDescription>
+                            Add some stickers to your cart to checkout.
+                        </EmptyDescription>
+                    </EmptyHeader>
+                    <div className="mt-6 flex justify-center">
+                        <Button onClick={() => router.push("/")}>
+                            Browse Stickers
+                        </Button>
+                    </div>
+                </Empty>
             </div>
         )
     }

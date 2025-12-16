@@ -29,7 +29,7 @@ export const ProductCard = ({ id, imageSrc, imageAlt, title, description, price 
     return (
         <Card className="bg-card/50 backdrop-blur border-border/50 hover:bg-card/80 transition-colors">
             <CardHeader>
-                <div className="w-full flex items-center justify-center aspect-square relative">
+                <div className="w-full flex items-center justify-center aspect-square relative bg-muted border rounded-md">
                     <Image src={imageSrc} alt={imageAlt} width={256} height={256} className="object-contain pointer-events-none" />
                 </div>
                 <CardTitle className="text-xl">{title}</CardTitle>

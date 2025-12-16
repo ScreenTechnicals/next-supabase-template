@@ -7,7 +7,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 const queryClient = new QueryClient();
 
 export const ClientProvider = ({ children }: { children: React.ReactNode }) => {
-    return <main className="bg-muted">
+    return <main className="bg-muted min-h-dvh">
         <QueryClientProvider client={queryClient}>
             <Header />
             {children}
