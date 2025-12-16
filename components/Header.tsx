@@ -1,5 +1,6 @@
 "use client";
 
+import { useCart } from "@/hooks/useCart";
 import { useUser } from "@/hooks/useUser";
 import { useUserAuth } from "@/hooks/useUserAuth";
 import { ShoppingCart, Zap } from "lucide-react";
@@ -9,8 +10,9 @@ import { Button } from "./ui/button";
 export const Header = () => {
     const { logout } = useUserAuth();
     const { isAuthenticated, user } = useUser();
+    const { cart } = useCart();
 
-    const cartItemsCount = 3;
+    const cartItemsCount = cart?.items.reduce((acc: number, item: any) => acc + item.quantity, 0) || 0;
 
     return (
         <header className="border-b sticky inset-0 bg-muted border-border/60 z-50">
@@ -24,7 +26,7 @@ export const Header = () => {
                 <nav className="flex items-center gap-4">
                     {isAuthenticated ? (
                         <>
-                            <Link href="/cart" className="relative flex items-center">
+                            <Link href="/checkout" className="relative flex items-center">
                                 <ShoppingCart className="h-6 w-6" />
                                 {cartItemsCount > 0 && (
                                     <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground rounded-full h-5 w-5 flex items-center justify-center text-xs">

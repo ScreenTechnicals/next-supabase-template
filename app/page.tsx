@@ -23,6 +23,7 @@ export default function Home() {
           stickers?.map((sticker) => (
             <ProductCard
               key={sticker.id}
+              id={sticker.id}
               imageSrc={sticker.image?.url || ""}
               imageAlt={sticker.image?.alt || ""}
               title={sticker.name}
