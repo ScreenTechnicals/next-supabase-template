@@ -12,6 +12,7 @@ import { Minus, Plus, ShoppingCart, Trash2 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useMemo } from "react";
+import { toast } from "sonner";
 
 export default function CheckoutPage() {
     const { cart, isLoading: isCartLoading, updateQuantity, removeFromCart, clearCart } = useCart();
@@ -33,10 +34,11 @@ export default function CheckoutPage() {
                 items: cart.items
             });
             await clearCart.mutateAsync();
+            toast.success("Order placed successfully!");
             router.push("/orders");
-        } catch (error) {
+        } catch (error: any) {
             console.error("Failed to place order:", error);
-            // ideally show toast here
+            toast.error(error.message || "Failed to place order. Please try again.");
         }
     };
 

@@ -69,7 +69,10 @@ export const useOrders = () => {
                 .select()
                 .single();
 
-            if (orderError) throw orderError;
+            if (orderError) {
+                console.error("Error creating order:", orderError);
+                throw orderError;
+            }
 
             // 2. Create Order Items
             const orderItems = items.map(item => ({
@@ -83,7 +86,10 @@ export const useOrders = () => {
                 .from("order_items")
                 .insert(orderItems);
 
-            if (itemsError) throw itemsError;
+            if (itemsError) {
+                console.error("Error creating order items:", itemsError);
+                throw itemsError;
+            }
 
             return order;
         },

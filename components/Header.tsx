@@ -26,6 +26,9 @@ export const Header = () => {
                 <nav className="flex items-center gap-4">
                     {isAuthenticated ? (
                         <>
+                            <Link href="/orders" className="text-sm font-medium hover:text-primary transition-colors">
+                                Orders
+                            </Link>
                             <Link href="/checkout" className="relative flex items-center">
                                 <ShoppingCart className="h-6 w-6" />
                                 {cartItemsCount > 0 && (
